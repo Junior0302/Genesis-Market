@@ -1,3 +1,9 @@
+const ecosystemLinks = [
+  { label: "Studio", href: process.env.NEXT_PUBLIC_MAIN_SITE_URL ?? "http://localhost:3000/fr" },
+  { label: "Academy", href: process.env.NEXT_PUBLIC_GENESIS_ACADEMY_URL ?? "http://localhost:3001/" },
+  { label: "Aide", href: process.env.NEXT_PUBLIC_GENESIS_AIDE_URL ?? "http://localhost:3003/" },
+];
+
 const offers = [
   {
     title: "Subscriptions",
@@ -30,9 +36,11 @@ export default function HomePage() {
           <div className="logo">Genesis Market</div>
           <div className="nav-links">
             <span>Offers</span>
-            <span>Subscriptions</span>
-            <span>Purchases</span>
-            <span>Support</span>
+            {ecosystemLinks.map((item) => (
+              <a key={item.label} href={item.href}>
+                {item.label}
+              </a>
+            ))}
           </div>
         </header>
 
@@ -42,6 +50,10 @@ export default function HomePage() {
           <p>
             Genesis Market isolates every commercial journey into its own lightweight platform so pricing,
             buying intent, SEO, checkout flows and offer clarity are no longer mixed with the flagship site.
+          </p>
+          <p>
+            This is the website intended to host subscription payments, direct purchases and commercial
+            conversion paths. The flagship site and Genesis Aide no longer expose checkout flows.
           </p>
           <div className="actions">
             <a className="button" href="mailto:hello@genesisconnectstudio.com">Contact</a>
