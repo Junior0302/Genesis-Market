@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://market.genesisconnectstudio.com";
 
@@ -139,6 +141,10 @@ export default function HomePage() {
           Genesis Market est separe du site principal pour garder une lecture plus claire des produits,
           un tunnel d&apos;achat autonome et une meilleure organisation des offres a connecter sur Vercel.
         </p>
+        <div className="footer-links">
+          <Link href="/mentions-legales">Mentions legales</Link>
+          <Link href="/conditions-generales">Conditions d&apos;utilisation</Link>
+        </div>
       </div>
       <script
         type="application/ld+json"
