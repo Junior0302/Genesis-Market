@@ -1,21 +1,45 @@
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://market.genesisconnectstudio.com";
+
 const ecosystemLinks = [
   { label: "Studio", href: process.env.NEXT_PUBLIC_MAIN_SITE_URL ?? "http://localhost:3000/fr" },
   { label: "Academy", href: process.env.NEXT_PUBLIC_GENESIS_ACADEMY_URL ?? "http://localhost:3001/" },
   { label: "Aide", href: process.env.NEXT_PUBLIC_GENESIS_AIDE_URL ?? "http://localhost:3003/" },
 ];
 
-const offers = [
+const offres = [
   {
-    title: "Subscriptions",
-    text: "Monthly website subscriptions, service plans and recurring offers with a cleaner sales journey.",
+    title: "Abonnements",
+    text: "Des formules mensuelles pour la gestion, l'evolution et l'optimisation continue des presences digitales.",
   },
   {
-    title: "One-time Purchases",
-    text: "Standalone offers, premium digital products and clearly framed purchase pages without studio content noise.",
+    title: "Produits digitaux",
+    text: "Des ressources payantes, packs, templates et outils vendus sans brouiller le site studio.",
   },
   {
-    title: "Sales SEO",
-    text: "Dedicated landing pages prepared for transactional intent, offer clarity and stronger conversion performance.",
+    title: "Offres commerciales",
+    text: "Des pages dediees pour presenter clairement une prestation, un tarif ou une solution a forte intention d'achat.",
+  },
+];
+
+const organisation = [
+  "Produits et offres presentes avec une logique de vente plus directe.",
+  "Abonnements et futurs paiements centralises sur Genesis Market uniquement.",
+  "Pages SEO transactionnelles preparees pour les intentions d'achat et de devis.",
+];
+
+const avantages = [
+  {
+    title: "Lecture immediate",
+    text: "Le visiteur comprend tout de suite qu'il est dans l'espace des offres, produits et souscriptions.",
+  },
+  {
+    title: "Tunnel plus propre",
+    text: "Les pages commerciales ne sont plus melangees avec le portfolio, la narration studio ou les contenus formation.",
+  },
+  {
+    title: "Vercel et domaine dedies",
+    text: "Le site est pret a vivre sur son propre projet, son propre sous-domaine et ses propres variables d'environnement.",
   },
 ];
 
@@ -24,8 +48,8 @@ const jsonLd = {
   "@type": "OnlineStore",
   name: "Genesis Market",
   description:
-    "Dedicated website for premium subscriptions, purchases and digital offers.",
-  url: "https://market.example.com",
+    "Site dedie aux abonnements, produits digitaux, achats et offres commerciales de l'ecosysteme Genesis.",
+  url: siteUrl,
 };
 
 export default function HomePage() {
@@ -35,7 +59,7 @@ export default function HomePage() {
         <header className="nav">
           <div className="logo">Genesis Market</div>
           <div className="nav-links">
-            <span>Offers</span>
+            <span>Produits et offres</span>
             {ecosystemLinks.map((item) => (
               <a key={item.label} href={item.href}>
                 {item.label}
@@ -44,25 +68,41 @@ export default function HomePage() {
           </div>
         </header>
 
-        <section className="hero">
-          <p className="eyebrow">Focused Commerce Platform</p>
-          <h1>A separate site dedicated only to subscriptions, purchases and offers.</h1>
-          <p>
-            Genesis Market isolates every commercial journey into its own lightweight platform so pricing,
-            buying intent, SEO, checkout flows and offer clarity are no longer mixed with the flagship site.
-          </p>
-          <p>
-            This is the website intended to host subscription payments, direct purchases and commercial
-            conversion paths. The flagship site and Genesis Aide no longer expose checkout flows.
-          </p>
-          <div className="actions">
-            <a className="button" href="mailto:hello@genesisconnectstudio.com">Contact</a>
-            <a className="button" href="#offers">Explore offers</a>
+        <section className="hero hero-grid">
+          <div className="stack">
+            <p className="eyebrow">Commerce Digital</p>
+            <h1>Un site dedie aux produits, abonnements et offres commerciales Genesis.</h1>
+            <p>
+              Genesis Market concentre tous les parcours d&apos;achat. L&apos;identite reste premium et coherente
+              avec l&apos;univers Genesis, mais le decor est plus clair, plus commercial et plus lisible que
+              le site principal.
+            </p>
+            <p>
+              Le but est simple: permettre a un visiteur de comprendre une offre, un prix, un format ou
+              un abonnement sans passer par les contenus studio ou les pages de formation.
+            </p>
+            <div className="actions">
+              <a className="button button-primary" href="#offres">
+                Voir les offres
+              </a>
+              <a className="button" href="mailto:hello@genesisconnectstudio.com">
+                Demander un devis
+              </a>
+            </div>
           </div>
+          <aside className="hero-card">
+            <p className="eyebrow">Ce qui doit vivre ici</p>
+            <h2>Paiements et produits concentres sur Market</h2>
+            <ul className="list">
+              <li>Abonnements et prestations recurrentes</li>
+              <li>Produits digitaux et achats ponctuels</li>
+              <li>Pages d&apos;offres, devis et futurs checkouts</li>
+            </ul>
+          </aside>
         </section>
 
-        <section id="offers" className="grid">
-          {offers.map((offer) => (
+        <section id="offres" className="grid">
+          {offres.map((offer) => (
             <article key={offer.title} className="card">
               <p className="eyebrow">Genesis Market</p>
               <h2>{offer.title}</h2>
@@ -71,36 +111,33 @@ export default function HomePage() {
           ))}
         </section>
 
+        <section className="panel stack">
+          <div>
+            <p className="eyebrow">Organisation commerciale</p>
+            <h2 className="section-title">Une base propre pour vendre sans confusion.</h2>
+          </div>
+          <div className="list-grid">
+            {organisation.map((item) => (
+              <div key={item} className="list-card">
+                {item}
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="grid">
-          <article className="card">
-            <p className="eyebrow">Conversion</p>
-            <h3>Clearer buying journeys</h3>
-            <p>
-              Visitors land directly on commercial content without navigating through unrelated studio,
-              editorial or training sections.
-            </p>
-          </article>
-          <article className="card">
-            <p className="eyebrow">SEO</p>
-            <h3>Transactional intent pages</h3>
-            <p>
-              The structure is ready for targeted sales pages, offer clusters, keyword-specific landings
-              and better SEO alignment with purchase intent.
-            </p>
-          </article>
-          <article className="card">
-            <p className="eyebrow">Responsive</p>
-            <h3>Mobile-first checkout context</h3>
-            <p>
-              The layout stays simple, readable and action-oriented on mobile so subscriptions and purchases
-              remain friction-light.
-            </p>
-          </article>
+          {avantages.map((item) => (
+            <article key={item.title} className="card">
+              <p className="eyebrow">Avantage</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
         </section>
 
         <p className="footer-copy">
-          Genesis Market is intentionally separated from the flagship website to keep offer discovery,
-          pricing structure and conversion logic fully focused.
+          Genesis Market est separe du site principal pour garder une lecture plus claire des produits,
+          un tunnel d&apos;achat autonome et une meilleure organisation des offres a connecter sur Vercel.
         </p>
       </div>
       <script
